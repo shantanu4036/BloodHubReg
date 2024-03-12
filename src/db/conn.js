@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/youtubeRegistration",{
+mongoose.connect('mongodb://localhost:27017/BloodHub', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // useCreateIndex: true
-    
 }).then(() => {
-    console.log(`connection succesful`);
-
+    console.log(`Connection successful`);
 }).catch((e) => {
-    console.log(`no connection`);
-})
+    console.error(`Connection error: ${e.message}`);
+});

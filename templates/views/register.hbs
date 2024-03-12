@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <title>Blood Donation Registration</title>
+  {{>header}}
   <style>
     body {
       background: #f8f9fa; /* Bootstrap default background color */
@@ -20,111 +21,108 @@
   </style>
 </head>
 <body>
+  {{>navbar}}
 
-<div class="container">
-  <h2 class="text-center mb-4">Blood Donation Registration</h2>
-  <form action="/register" method="POST">
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName" required>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="middleName">Middle Name</label>
-        <input type="text" class="form-control" id="middleName" placeholder="Enter Middle Name" name="middleName">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName" required>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="email">Email ID</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="bloodGroup">Blood Group</label>
-        <select class="form-control" id="bloodGroup" required>
-          <option value="" disabled selected>Select Blood Group</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="phoneNumber">Phone Number</label>
-        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label>Gender</label><br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-          <label class="form-check-label" for="male">Male</label>
+  <div class="container">
+    <h2 class="text-center mb-4">Blood Donation Registration</h2>
+    <form action="/register" method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname" >
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-          <label class="form-check-label" for="female">Female</label>
+        <div class="form-group col-md-4">
+          <label for="middleName">Middle Name</label>
+          <input type="text" class="form-control" id="middlename" placeholder="Enter Middle Name" name="middlename">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname" >
         </div>
       </div>
-    </div>
-    {{!-- <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="photo">Upload Your Photo</label>
-        <input type="file" class="form-control-file" id="photo" accept="image/*">
-      </div> --}}
-      {{!-- <div class="form-group col-md-6">
-        <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" onchange="calculateAge()" required>
-      </div> --}}
-      {{!-- <div class="form-group col-md-6">
-        <label for="age">Age</label>
-        <input type="text" class="form-control" id="age" readonly>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" >
+        </div>
+         <div class="form-group col-md-6">
+          <label for="bloodGroup">Blood Group</label>
+          <select class="form-control" id="bloodGroup" required>
+            <option value="" disabled selected>Select Blood Group</option>
+            <option value="A+" name="bdgroup">A+</option>
+            <option value="A-"name="bdgroup">A-</option>
+            <option value="B+" name="bdgroup">B+</option>
+            <option value="B-" name="bdgroup">B-</option>
+            <option value="O+" name="bdgroup">O+</option>
+            <option value="O-" name="bdgroup">O-</option>
+            <option value="AB+" name="bdgroup">AB+</option>
+            <option value="AB-" name="bdgroup">AB-</option>
+          </select>
+        </div>
       </div>
-    </div> --}}
-
-    <!-- Existing form fields... -->
-
-    <button type="submit" class="btn btn-primary">Register</button>
-  </form>
-{{!-- 
-        <label for="state">State</label>
-        <select class="form-control" id="state" required>
-          <option value="" disabled selected>Select State</option>
-          <option value="state1">State 1</option>
-          <option value="state2">State 2</option>
-          <option value="state3">State 3</option>
-          <!-- Add more states as needed -->
-        </select> --}}
-      </div>
-    </div>
-   
-  </form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+    <label for="phoneNumber">Phone Number</label>
+    <input type="tel" pattern="[0-9]+" class="form-control" id="phone" placeholder="Enter Phone Number" name="phone" required>
+    <!-- Add the pattern attribute to allow only numeric input -->
 </div>
 
-<!-- Include Bootstrap JS and Popper.js -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" name="confirmpassword">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Gender</label><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" >
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" >
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+      </div>
+       <div class="form-row">
+        {{!-- <div class="form-group col-md-6">
+          <label for="photo">Upload Your Photo</label>
+          <input type="file" class="form-control-file" id="photo" accept="image/*">
+        </div>  --}}
+         {{!-- <div class="form-group col-md-6">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" onchange="calculateAge()" required>
+        </div> --}}
+        {{!-- <div class="form-group col-md-6">
+          <label for="age">Age</label>
+          <input type="text" class="form-control" id="age" readonly>
+        </div> --}}
+      </div> 
 
+      <!-- Existing form fields... -->
+      <label for="state">State</label>
+    <select class="form-control" id="state" name="state" required>
+      <option value="" disabled selected>Select State</option>
+      <option value="state1" name="state">Jharkhand</option>
+      <option value="state2" name="state">Odisha</option>
+      <option value="state3" name="state">West Bengal</option>
+    
+    </select>
 
+      <button type="submit" class="btn btn-primary" value="Register" name="Register">Register</button>
+    </form>
+   
+    
+  </div>
 
+  <!-- Include Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
