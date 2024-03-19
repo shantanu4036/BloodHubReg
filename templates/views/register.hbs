@@ -19,6 +19,17 @@
       margin-bottom: 20px;
     }
   </style>
+  <script>
+    function checkPass()
+    {
+      let p=document.getElementById(password).value;
+      let cp=document.getElementById(confirmpassword).value;
+      if(p!==cp)
+      document.getElementById(message).innerHTML="Password and Confirm Password didn't match";
+      else
+      document.getElementById(message).innerHTML="";
+    }
+  </script>
 </head>
 <body>
   {{>navbar}}
@@ -75,8 +86,9 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" name="confirmpassword">
+          <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" name="confirmpassword" oninput="checkPass()">
         </div>
+        <small><p id="message"></p></small>
         <div class="form-group col-md-6">
           <label>Gender</label><br>
           <div class="form-check form-check-inline">
